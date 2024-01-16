@@ -13,9 +13,9 @@ class ReviewsCarousel extends Component {
     }
   }
 
-  onChangereviewright = reviewslistlength => {
+  onChangereviewright = reviewsListlength => {
     const {count} = this.state
-    if (count < reviewslistlength - 1) {
+    if (count < reviewsListlength - 1) {
       this.setState(prevState => ({count: prevState.count + 1}))
     }
   }
@@ -23,8 +23,7 @@ class ReviewsCarousel extends Component {
   render() {
     const {count} = this.state
     const {reviewsList} = this.props
-    const reviewslistlength = reviewsList.length
-    // const {username, imageUrl, companyName, description} = reviewsList
+    const reviewsListlength = reviewsList.length
 
     return (
       <div className="maincontainer">
@@ -34,7 +33,7 @@ class ReviewsCarousel extends Component {
           <button
             type="button"
             className="button"
-            onClick={this.onChangereviewleft(reviewslistlength)}
+            onClick={this.onChangereviewleft}
             data-testid="leftArrow"
           >
             <img
@@ -46,8 +45,8 @@ class ReviewsCarousel extends Component {
 
           <div className="imagecontainer">
             <img
-              src={reviewsList[count].imageUrl}
-              alt="username"
+              src={reviewsList[count].imgUrl}
+              alt={reviewsList[count].username}
               className="image"
             />
             <p className="name">{reviewsList[count].username}</p>
@@ -56,9 +55,9 @@ class ReviewsCarousel extends Component {
           </div>
           <button
             type="button"
-            onClick={this.onChangereviewright(reviewslistlength)}
+            onClick={() => this.onChangereviewright(reviewsListlength)}
             className="button"
-            data-testid="right Arrow"
+            data-testid="rightArrow"
           >
             <img
               src="https://assets.ccbp.in/frontend/react-js/right-arrow-img.png"
